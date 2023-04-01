@@ -20,23 +20,36 @@ function Top() {
   // サインイン
   // https://ralacode.com/blog/post/react-firebase-authentication/
   const provider = new GoogleAuthProvider();
-  const login = () => {
+  const login = async () => {
     // サインイン用関数
-    signInWithRedirect(auth, provider);
+    await signInWithRedirect(auth, provider);
+    // .then(() => {setUser(auth.currentUser)});
   }
+
+  // サインインは済んでいるか？
+  // onAuthStateChangedの起爆が遅いのでここで判断
+  // https://zenn.dev/rinka/articles/6ed09e0c87838b
+  const [signInCheck, setSignInCheck] = useState(false);
 
   /* ↓ログインしているかどうかを判定する */
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (auth.currentUser) {
+        // ローディング終わり！
+        setUser(auth.currentUser);
+        setSignInCheck(true);
+      } else {
+        setSignInCheck(true);
+      }
     });
-  }, []);
+  }, [user]);
 
-
-  return (
-    <div id='top'>
-      { user ? (<Navigate to={'/novels'}></Navigate>) : (
-        <>
+  if (!signInCheck) {
+    return <p>loading ... </p>;
+  } else if (!user) {
+    // ログインしてない
+    return (
+      <>
           <div className="mt-20">
             <img src={logo} alt="Best Prot EVER" className='mx-auto'></img>
           </div>
@@ -51,11 +64,12 @@ function Top() {
             </button> 
           </div>
         </>
-        )
-      }
-        
-    </div>
-  );
+    );
+
+  } else {
+    // ログインしてる
+    return <Navigate to={'/novels'}></Navigate>;
+  }
 }
 
 export default Top;

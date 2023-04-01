@@ -23,17 +23,16 @@ const Novels = () => {
 
   // ログインしてない人は入れないように分岐
   if (user) {
-
+    return (
+      <>
+        <div>Novels</div>
+        <button onClick={logout}>Sign out</button>
+      </>
+    )
   } else {
     // サインアウト
     return (<Navigate to={"/"}></Navigate>);
   }
-  return (
-    <>
-      <div>Novels</div>
-      <button onClick={logout}>Sign out</button>
-    </>
-  )
 }
 
 export default Novels
