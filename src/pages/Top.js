@@ -14,6 +14,8 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'fire
 
 function Top() {
 
+    /* ↓state変数「user」を定義 */
+    const [user, setUser] = useState("");
 
   // サインイン
   // https://ralacode.com/blog/post/react-firebase-authentication/
@@ -22,9 +24,6 @@ function Top() {
     // サインイン用関数
     signInWithRedirect(auth, provider);
   }
-
-  /* ↓state変数「user」を定義 */
-  const [user, setUser] = useState("");
 
   /* ↓ログインしているかどうかを判定する */
   useEffect(() => {
@@ -35,7 +34,7 @@ function Top() {
 
 
   return (
-    <>
+    <div id='top'>
       { user ? (<Navigate to={'/novels'}></Navigate>) : (
         <>
           <div className="mt-20">
@@ -46,15 +45,16 @@ function Top() {
           {/* 参考ページ
           Firebase を使用して認証システムを構築する場合（FirebaseUIというライブラリを使用してログイン機能を構築）:
           https://firebase.google.com/docs/auth/where-to-start?authuser=0&hl=ja */}
-
-          <button className="block mx-auto" onClick={login}>
-              Googleでログイン
-          </button> 
+          <div className='text-center'>
+            <button className="rounded-full border p-3" onClick={login}>
+                Googleでログイン
+            </button> 
+          </div>
         </>
         )
       }
         
-    </>
+    </div>
   );
 }
 
