@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Top from "./pages/Top";
+import Novels from './pages/Novels';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+// 主にルーティングに使用
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter> 
+      <Routes>
+        <Route path="/" element={<Top />}>
+        </Route>
+
+        <Route path="/novels" element={<Novels />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
