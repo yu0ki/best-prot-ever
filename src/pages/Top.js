@@ -34,7 +34,7 @@ function Top() {
   /* ↓ログインしているかどうかを判定する */
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      if (auth.currentUser) {
+      if (currentUser) {
         // ローディング終わり！
         setUser(auth.currentUser);
         setSignInCheck(true);
