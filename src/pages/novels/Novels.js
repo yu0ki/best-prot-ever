@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { auth } from '../../firebase'
 import { Navigate } from 'react-router-dom'
 import Container from '../components/Container'
-import ProtCard from '../components/ProtCard'
 import page_title from "./Prot.png"
-import { AiOutlinePlus } from "react-icons/ai"
+import CardList from './CardList'
 
 const Novels = () => {
 
@@ -34,37 +33,6 @@ const Novels = () => {
       {prot_id:2, author_id: auth.currentUser}]
   );
 
-  // カードのリスト（部分テンプレート：1行分）
-  // フィルター前のprotsと, statusを渡す
-  const CardList = ( prots, status ) => {
-    return (
-      <>
-        <div className=''>
-          <h1 className='font-bold text-3xl my-3'>
-            { status === 0 && "構想中" }
-            { status === 1 && "執筆中" }
-            { status === 2 && "執筆済み" }
-          </h1>
-
-          <div className='flex flex-wrap'>
-            {/* TODO : 新規追加用カード */}
-            <div className="border border-zinc-500 rounded-lg p-3 mr-3 my-3 w-2/5">
-                <p className='text-slate-500'>
-                  <AiOutlinePlus className='inline'></AiOutlinePlus> 小説を追加 
-                </p>
-            </div>
-
-            {/* 既存カード一覧 */}
-            {
-              prots
-              .filter(props => props.status === status)
-              .map( (prot) => <ProtCard prot={prot} key={prot.id}></ProtCard>)
-            }
-          </div>
-        </div>
-      </>
-    );
-  };
 
   // ログインしてない人は入れないように分岐
   if (user) {
@@ -77,15 +45,15 @@ const Novels = () => {
 
           <div className='flex w-screen'>
             <div className='w-1/3'>
-              {CardList(prots, 0)}
+              <CardList prots={prots} setProts={setProts} status={0}></CardList>
             </div>
 
             <div className='w-1/3'>
-              {CardList(prots, 1)}
+            <CardList prots={prots} setProts={setProts} status={1}></CardList>
             </div>
 
             <div className='w-1/3'>
-              {CardList(prots, 2)}
+            <CardList prots={prots} setProts={setProts} status={2}></CardList>
             </div>
           </div>
         </div>
