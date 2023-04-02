@@ -1,7 +1,8 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import React, { useEffect, useState } from 'react'
 import { auth } from '../firebase'
 import { Navigate } from 'react-router-dom'
+import Header from './components/Header'
 
 const Novels = () => {
 
@@ -15,18 +16,13 @@ const Novels = () => {
       setUser(currentUser);
     });
   }, []);
-  
-  // logout関数
-  const logout = () => {
-    signOut(auth);
-  }
 
   // ログインしてない人は入れないように分岐
   if (user) {
     return (
       <>
-        <div>Novels</div>
-        <button onClick={logout}>Sign out</button>
+        <Header></Header>
+        <div>Welcome to Novels</div>
       </>
     )
   } else {

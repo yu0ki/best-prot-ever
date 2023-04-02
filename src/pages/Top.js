@@ -7,6 +7,7 @@ import { auth } from "./../firebase"
 // import firebase from "firebase/compat/app";
 import { Navigate } from 'react-router-dom';
 import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth';
+import Header from './components/Header';
 
 
 
@@ -46,11 +47,16 @@ function Top() {
   }, [user]);
 
   if (!signInCheck) {
-    return <p>loading ... </p>;
+    return (
+    <>
+      <Header></Header>
+      <p>loading ... </p>
+    </>);
   } else if (!user) {
     // ログインしてない
     return (
       <>
+        <Header></Header>
           <div className="mt-20">
             <img src={logo} alt="Best Prot EVER" className='mx-auto'></img>
           </div>
