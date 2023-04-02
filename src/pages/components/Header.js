@@ -1,7 +1,7 @@
 import { React } from 'react'
 import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
-import logo from "./../Best Prot.png";
+import logo from "./EVER.png";
 
 const Header = () => {
 
@@ -15,7 +15,7 @@ const Header = () => {
         <>
             <div className='flex justify-between m-5'>
                 <div className=''>
-                    <img src={logo} className='h-20' alt="Logo"></img>
+                    <img src={logo} className='h-10 m-4' alt="Logo"></img>
                 </div>
                 <div className='flex'>
                     {/* ログインした人用ヘッダー */}
