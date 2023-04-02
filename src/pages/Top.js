@@ -60,7 +60,7 @@ function Top() {
           Firebase を使用して認証システムを構築する場合（FirebaseUIというライブラリを使用してログイン機能を構築）:
           https://firebase.google.com/docs/auth/where-to-start?authuser=0&hl=ja */}
           <div className='text-center'>
-            <button className="rounded-full border p-3" onClick={login}>
+            <button className="rounded-full border border-zinc-300 p-3" onClick={login}>
                 Googleでログイン
             </button> 
           </div>

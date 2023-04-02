@@ -30,7 +30,7 @@ const Novels = () => {
       </>
     )
   } else {
-    // サインアウト
+    // サインアウト済みの場合はトップページへ
     return (<Navigate to={"/"}></Navigate>);
   }
 }
