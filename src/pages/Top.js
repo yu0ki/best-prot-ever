@@ -29,6 +29,7 @@ function Top() {
   // サインインは済んでいるか？
   // onAuthStateChangedの起爆が遅いのでここで判断
   // https://zenn.dev/rinka/articles/6ed09e0c87838b
+  // useEffectの実行が終わったかどうか？ということを表していると思った方が正しそう
   const [signInCheck, setSignInCheck] = useState(false);
 
   /* ↓ログインしているかどうかを判定する */
