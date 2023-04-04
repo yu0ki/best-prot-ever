@@ -3,7 +3,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ProtCard = ({ prot }) => {
+const NovelCard = ({ prot }) => {
 
     return (
         <>
@@ -23,4 +23,4 @@ const ProtCard = ({ prot }) => {
   )
 }
 
-export default ProtCard
+export default NovelCard

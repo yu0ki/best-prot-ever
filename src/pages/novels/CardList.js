@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai';
-import ProtCard from './ProtCard';
+import NovelCard from './NovelCard';
 import {v5 as uuid} from "uuid"; 
 
 const CardList = ( {prots, setProts, status} ) => {
@@ -46,7 +46,7 @@ const CardList = ( {prots, setProts, status} ) => {
             {
               prots
               .filter(props => props.status === status)
-              .map( (prot) => <ProtCard prot={prot} key={prot.id}></ProtCard>)
+              .map( (prot) => <NovelCard prot={prot} key={prot.id}></NovelCard>)
             }
           </div>
         </div>
