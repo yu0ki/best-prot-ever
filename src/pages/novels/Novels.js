@@ -20,7 +20,7 @@ const Novels = () => {
   }, []);
 
   // ダミーのプロット情報を初期化
-  const [prots, setProts] = useState(
+  const [novels, setNovels] = useState(
     [{id:1, title:"ヘンゼルとグレーテル", status: 1},
     {id:2, title:"不思議の国のアリス", status: 0},
     {id:3, title:"赤ずきん", status: 2},
@@ -29,8 +29,8 @@ const Novels = () => {
 
   // プロット参加者情報
   const [authors, setAuthors] = useState(
-    [{prot_id:1, author_id: auth.currentUser},
-      {prot_id:2, author_id: auth.currentUser}]
+    [{novel_id:1, author_id: auth.currentUser},
+      {novel_id:2, author_id: auth.currentUser}]
   );
 
 
@@ -45,15 +45,15 @@ const Novels = () => {
 
           <div className='flex w-screen'>
             <div className='w-1/3'>
-              <CardList prots={prots} setProts={setProts} status={0}></CardList>
+              <CardList novels={novels} setNovels={setNovels} status={0}></CardList>
             </div>
 
             <div className='w-1/3'>
-            <CardList prots={prots} setProts={setProts} status={1}></CardList>
+            <CardList novels={novels} setNovels={setNovels} status={1}></CardList>
             </div>
 
             <div className='w-1/3'>
-            <CardList prots={prots} setProts={setProts} status={2}></CardList>
+            <CardList novels={novels} setNovels={setNovels} status={2}></CardList>
             </div>
           </div>
         </div>

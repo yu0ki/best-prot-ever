@@ -3,15 +3,15 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import NovelCard from './NovelCard';
 import {v5 as uuid} from "uuid"; 
 
-const CardList = ( {prots, setProts, status} ) => {
+const CardList = ( {novels, setNovels, status} ) => {
     // 小説新規投稿のタイトル
     const titleRef = useRef();
 
     // 新規小説作成
     const handleSubmit = () => {
         const title = titleRef.current.value;
-        setProts(
-            [...prots, 
+        setNovels(
+            [...novels, 
             {id: uuid.generate, title: title, status: status},]
         );
         titleRef.current.value = ''; 
@@ -44,9 +44,9 @@ const CardList = ( {prots, setProts, status} ) => {
 
             {/* 既存カード一覧 */}
             {
-              prots
+              novels
               .filter(props => props.status === status)
-              .map( (prot) => <NovelCard prot={prot} key={prot.id}></NovelCard>)
+              .map( (novel) => <NovelCard novel={novel} key={novel.id}></NovelCard>)
             }
           </div>
         </div>
