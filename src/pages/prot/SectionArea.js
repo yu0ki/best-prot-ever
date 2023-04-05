@@ -1,5 +1,5 @@
 import React from 'react'
-import SceneCard from './SceneCard'
+import SceneCard from './SceneCard';
 
 const SectionArea = ( {section, sceneCards} ) => {
 
@@ -24,27 +24,19 @@ const SectionArea = ( {section, sceneCards} ) => {
 
         // 1行目だけを取り出したcardsを作成
         let main_card = sceneCards[0];
-        console.log("main card");
-        console.log(main_card);
         let main_timeline = [];
         main_timeline.push([main_card]);
         while (main_card.right_card_id != null) {
             main_card = sceneCards[main_card.right_card_id];
             main_timeline.push([main_card]);  
         }
-        console.log("main timeline");
-        console.log(main_timeline);
 
         // 分岐した分を収納      
         for (let i = 0; i < main_timeline.length; i++) {
             let card = main_timeline[i][0];
-            console.log("card(first)");
-            console.log(card);
             let sub_timeline = main_timeline[i];
             while (card.bottom_card_id != null) {
                 card = sceneCards[card.bottom_card_id];
-                console.log("card(second)");
-                console.log(card);
                 sub_timeline.push(card);
             }
         }
@@ -52,13 +44,11 @@ const SectionArea = ( {section, sceneCards} ) => {
 
         return (
             <>
-                <div className='flex'>
+                <div className='flex p-3'>
                     {main_timeline.map( (vertical) => (
-                        <div>
+                        <div key={vertical[0].card_id}>
                             {vertical.map( (card) => (
-                                <div>
-                                    {card.content}
-                                </div>
+                                <SceneCard key={"card" + card.card_id} sceneCard={card}></SceneCard>
                             ))} 
                         </div>
                     ))}
@@ -71,7 +61,7 @@ const SectionArea = ( {section, sceneCards} ) => {
 
   return (
     <>
-        <div className='my-5 border w-full' style={{height: section.height}}>
+        <div className='my-5 border w-full h-1/5'>
             {/* 章タイトル */}
             <div className='bg-zinc-100 px-3 py-1'>
                 {section.title}

@@ -51,8 +51,8 @@ const Novels = () => {
       });
   }, []);
   
-  if (signInCheck) {
-    <p>Loading at Novels.js</p>
+  if (!signInCheck) {
+    return <p>Loading at Novels.js</p>
   } else if (user) {
     return (
       <Container>

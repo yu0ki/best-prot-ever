@@ -64,9 +64,9 @@ const Prot = () => {
     } else if (auth.currentUser) {
         return (
             <Container>
-                <div className='mx-5'>
+                <div className='mx-5 h-screen w-screen'>
                     {sections.map( section => 
-                    <SectionArea section={section} sceneCards={sceneCards.filter( (card) => card.section_id === section.section_id )}>
+                    <SectionArea key={"section" + section.section_id} section={section} sceneCards={sceneCards.filter( (card) => card.section_id === section.section_id )}>
                     </SectionArea> )}
                 </div>
             </Container>
