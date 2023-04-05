@@ -66,7 +66,7 @@ const Prot = () => {
             <Container>
                 <div className='mx-5 h-screen w-screen'>
                     {sections.map( section => 
-                    <SectionArea key={"section" + section.section_id} section={section} sceneCards={sceneCards.filter( (card) => card.section_id === section.section_id )}>
+                    <SectionArea key={"section" + section.section_id} section={section} sceneCards={sceneCards.filter( (card) => card.section_id === section.section_id )} setSceneCards={setSceneCards}>
                     </SectionArea> )}
                 </div>
             </Container>

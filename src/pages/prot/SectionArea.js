@@ -1,7 +1,7 @@
 import React from 'react'
 import SceneCard from './SceneCard';
 
-const SectionArea = ( {section, sceneCards} ) => {
+const SectionArea = ( {section, sceneCards, setSceneCards} ) => {
 
     // カード描画案2用
     // 横にカードを並べる関数
@@ -48,7 +48,7 @@ const SectionArea = ( {section, sceneCards} ) => {
                     {main_timeline.map( (vertical) => (
                         <div key={vertical[0].card_id}>
                             {vertical.map( (card) => (
-                                <SceneCard key={"card" + card.card_id} sceneCard={card}></SceneCard>
+                                <SceneCard key={"card" + card.card_id} sceneCard={card} sceneCards={sceneCards} setSceneCards={setSceneCards}></SceneCard>
                             ))} 
                         </div>
                     ))}
@@ -61,7 +61,7 @@ const SectionArea = ( {section, sceneCards} ) => {
 
   return (
     <>
-        <div className='my-5 border w-full h-1/5'>
+        <div className='my-5 border w-full'>
             {/* 章タイトル */}
             <div className='bg-zinc-100 px-3 py-1'>
                 {section.title}
