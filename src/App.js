@@ -14,9 +14,10 @@ function App() {
         </Route>
 
         <Route path="/novels" element={<Novels />}>
-          {/* プロット詳細ページ */}
-          <Route path=":id" element={<Prot />}></Route>
         </Route>
+
+        {/* プロット詳細ページ */}
+        <Route path="/novels/:id" element={<Prot />}></Route>
       </Routes>
     </BrowserRouter>
   );

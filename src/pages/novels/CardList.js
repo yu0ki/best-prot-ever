@@ -35,10 +35,9 @@ const CardList = ( {novels, setNovels, status} ) => {
                   <AiOutlinePlus className='inline'></AiOutlinePlus> 小説を追加
                 </p>
 
-                <div className='my-1'>
-                    <label>タイトル</label>
-                    <input type="text" ref={titleRef} />  
-                    <button onClick={handleSubmit} >Submit</button>
+                <div className='mt-4'>
+                    <input type="text" ref={titleRef} placeholder="タイトル" className='w-full border'/>  
+                    <button onClick={handleSubmit} >作成</button>
                 </div>
             </div>
 

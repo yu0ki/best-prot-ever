@@ -21,17 +21,17 @@ const Novels = () => {
 
   // ダミーのプロット情報を初期化
   const [novels, setNovels] = useState(
-    [{id:1, title:"ヘンゼルとグレーテル", status: 1},
-    {id:2, title:"不思議の国のアリス", status: 0},
-    {id:3, title:"赤ずきん", status: 2},
-    {id:4, title:"しらゆきひめ", status: 2}]
+    [{id:1, title:"ヘンゼルとグレーテル", status: 1, main_author_id: 1},
+    {id:2, title:"不思議の国のアリス", status: 0, main_author_id: 1},
+    {id:3, title:"赤ずきん", status: 2, main_author_id: 1},
+    {id:4, title:"しらゆきひめ", status: 2, main_author_id: 1}]
   );
 
-  // プロット参加者情報
-  const [authors, setAuthors] = useState(
-    [{novel_id:1, author_id: auth.currentUser},
-      {novel_id:2, author_id: auth.currentUser}]
-  );
+  // // プロット参加者情報
+  // const [authors, setAuthors] = useState(
+  //   [{novel_id:1, author_id: auth.currentUser},
+  //     {novel_id:2, author_id: auth.currentUser}]
+  // );
 
 
   // ログインしてない人は入れないように分岐
