@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import Container from '../components/Container';
 import { auth } from '../../firebase';
 import SectionArea from './SectionArea';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Prot = () => {
     // どの小説のプロットページ？
@@ -41,8 +42,26 @@ const Prot = () => {
     //     {novel_id: novel_id, section_id: 2, head_card_id: 4}
     // ]);
   
-    {/* ログイン弾き */}
-    if (auth.currentUser) {
+    // ログイン弾き
+    // useEffectの実行が終わったかどうか？ということを表している
+    const [signInCheck, setSignInCheck] = useState(false);
+
+    /* ↓ログインしているかどうかを判定する */
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+        if (currentUser) {
+            // ローディング終わり！
+            // setUser(auth.currentUser);
+            setSignInCheck(true);
+        } else {
+            setSignInCheck(true);
+        }
+        });
+    }, []);
+
+    if (!signInCheck) {
+        <p>Loading at prot</p>
+    } else if (auth.currentUser) {
         return (
             <Container>
                 <div className='mx-5'>

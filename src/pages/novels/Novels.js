@@ -34,8 +34,26 @@ const Novels = () => {
   // );
 
 
-  // ログインしてない人は入れないように分岐
-  if (user) {
+  // ログイン弾き
+  // useEffectの実行が終わったかどうか？ということを表している
+  const [signInCheck, setSignInCheck] = useState(false);
+
+  /* ↓ログインしているかどうかを判定する */
+  useEffect(() => {
+      onAuthStateChanged(auth, (currentUser) => {
+        // if (currentUser) {
+        //     // ローディング終わり！
+        //     // setUser(auth.currentUser);
+        //     setSignInCheck(true);
+        // } else {
+            setSignInCheck(true);
+        // }
+      });
+  }, []);
+  
+  if (signInCheck) {
+    <p>Loading at Novels.js</p>
+  } else if (user) {
     return (
       <Container>
         <div className='mx-5'>
