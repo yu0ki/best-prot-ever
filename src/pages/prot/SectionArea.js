@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SceneCard from './SceneCard';
 
 const SectionArea = ( {section, sceneCards, setSceneCards} ) => {
@@ -6,7 +6,7 @@ const SectionArea = ( {section, sceneCards, setSceneCards} ) => {
     // カード描画案2用
     // 横にカードを並べる関数
     // mapの入れ子で取り出せるように、listのlistを作成
-    function alignCards(sceneCards) {
+    function AlignCards(sceneCards) {
         // とりあえず全部のカードをcard_id 昇順ソート
         // https://kojimanotech.com/2020/05/03/216/
         sceneCards.sort(function(a, b) {
@@ -21,11 +21,11 @@ const SectionArea = ( {section, sceneCards, setSceneCards} ) => {
             }
         })
 
-
-        // 1行目だけを取り出したcardsを作成
         let main_card = sceneCards[0];
         let main_timeline = [];
         main_timeline.push([main_card]);
+        console.log(main_card);
+        console.log(sceneCards);
         while (main_card.right_card_id != null) {
             main_card = sceneCards[main_card.right_card_id];
             main_timeline.push([main_card]);  
@@ -73,7 +73,7 @@ const SectionArea = ( {section, sceneCards, setSceneCards} ) => {
             </div> */}
 
             {/* カード描画エリア案2 */}
-            {alignCards(sceneCards)}
+            {AlignCards(sceneCards)}
         </div>
     </>
   )

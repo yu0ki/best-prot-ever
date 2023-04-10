@@ -14,7 +14,7 @@ const Prot = () => {
     // 章
     const [sections, setSections] = useState(
         [{novel_id: novel_id, section_id: 1, title: "1章", height: 120},
-        {novel_id: novel_id, section_id: 2, title: "2章", height: 120}
+        // {novel_id: novel_id, section_id: 2, title: "2章", height: 120}
     ]
     );
 
@@ -58,6 +58,7 @@ const Prot = () => {
         }
         });
     }, []);
+
 
     if (!signInCheck) {
         <p>Loading at prot</p>
